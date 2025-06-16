@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  smart-upload:
+    image: smart-upload-app:latest
+    container_name: smart-upload-container
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./input_files:/app/input_files
+      - ./output_images:/app/output_images
+    environment:
+      - NGROK_AUTHTOKEN=2ryVmoQz7iNjTBqaqoi7nHZik2p_5Lk8df61G1UMQjNzS78eg
+    restart: unless-stopped
