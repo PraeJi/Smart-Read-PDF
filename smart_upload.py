@@ -8,6 +8,12 @@ import base64
 import io
 from PIL import Image
 from io import BytesIO
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_llm = os.getenv("API_LLM")
+api_key = os.getenv("API_KEY")
 
 app = Flask(__name__)
 
@@ -81,10 +87,10 @@ def convert_image_to_base64(output_dir):
 
 def api_base64(payload_all):
 
-    url_read_text = "https://ai-api.manageai.co.th/llm-vl-model-01/v1/chat/completions"
+    url_read_text = api_llm
     headers = {
       'Content-Type': 'application/json',
-      'Authorization': "Basic bWFuYWdlYWkyMDI0Ok1hbmFnZUFJQDIwMjQ=",
+      'Authorization': f"Basic {api_key}",
       'Cookie': 'Path=/'
     }
 
